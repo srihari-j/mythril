@@ -16,24 +16,6 @@ jobs:
       - name: Run Mythril analysis
         run: myth analyze contracts/*.sol  --out json > results.json
         
-      - name: Upload report as artifact
-        uses: actions/upload-artifact@v2
-        with:
-            name: mythril-report
-            path: /home/runner/work/srihari-mytril/srihari-mytril/build/contracts
-            
-      - name: Download build artifacts
-        uses: actions/download-artifact@v2
-        with:
-           name: mythril-report
-           path: /home/runner/work/srihari-mytril/srihari-mytril/build/contracts    
-      
-      -  name: Upload SARIF file
-         uses: github/codeql-action/upload-sarif@v2 
-         with:
-           sarif_file: ${{ steps.slither.outputs.sarif }}
-           token: ${{ secrets.SECRET_NAME }}
-          
       - name: Upload Mythril report
         uses: actions/upload-artifact@v2
         with:
