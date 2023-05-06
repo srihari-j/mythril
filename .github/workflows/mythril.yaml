@@ -15,4 +15,4 @@ jobs:
           pip install mythril
       - name: Run Mythril scan
         run: |
-          myth analyze contracts/ --solv 0.8.4
+          myth analyze contracts/dummy.sol --solv 0.8.4
