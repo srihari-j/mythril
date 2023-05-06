@@ -21,4 +21,4 @@ jobs:
         with:
           name: Mythril Results
           path: |
-            report.json
+            results.json
