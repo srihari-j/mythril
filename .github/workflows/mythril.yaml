@@ -1,0 +1,18 @@
+name: Mythril audit
+on: [push]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install Mythril
+        run: |
+          pip install mythril
+      - name: Run Mythril scan
+        run: |
+          myth analyze contracts/ --solv 0.8.4
