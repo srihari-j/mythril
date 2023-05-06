@@ -14,7 +14,7 @@ jobs:
         run: |
           pip install mythril
       - name: Run Mythril analysis
-        run: myth analyze contracts/*.sol --workflow mythril.yaml
+        run: myth analyze contracts/*.sol
         env:
           MYTHRIL_WORKFLOW: |
             analysis:
@@ -41,4 +41,4 @@ jobs:
         with:
           name: Mythril Results
           path: |
-            results.json
+            report.json
