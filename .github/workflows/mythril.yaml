@@ -14,28 +14,8 @@ jobs:
         run: |
           pip install mythril
       - name: Run Mythril analysis
-        run: myth analyze contracts/*.sol --workflow workflow.yaml
-        env:
-          MYTHRIL_WORKFLOW: |
-            analysis:
-              strategy: dfs
-              mode: full
-            report:
-              issues:
-                - description
-                - code
-                - function
-                - filename
-                - lineno
-                - type
-                - severity
-              format: json
-              output_file: report.json
-            modules:
-              enable_modules: all
-              disable_modules:
-                - erc20-balance-check
-                - payable-fallback
+        run: myth analyze contracts/*.sol  --out json > results.json
+        
       - name: Upload results
         uses: actions/upload-artifact@v2
         with:
